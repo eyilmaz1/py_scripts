@@ -6,6 +6,28 @@ import ipaddress
 def get_network(cidr_ip):
     return str(ipaddress.ip_network(cidr_ip, strict=False))
 
+def get_mac_address(system, interface):
+    if system == "Linux":
+        result = subprocess.run(['ip', 'link', 'show', interface], stdout=subprocess.PIPE)
+        output = result.stdout.decode()
+        mac_match = re.search(r'link/ether (\S+)', output)
+        if mac_match:
+            return mac_match.group(1)
+        else:
+            return None
+
+    elif system == "Darwin":
+        result = subprocess.run(['ifconfig', interface], stdout=subprocess.PIPE)
+        output = result.stdout.decode()
+        mac_match = re.search(r'ether (\S+)', output)
+        if mac_match:
+            return mac_match.group(1)
+        else:
+            return None
+    else:
+        print(f"Unsupported system: {system}")
+        return None
+
 def get_active_interface_and_gateway(system):
     if system == "Linux":
         result = subprocess.run(['ip', 'route'], stdout=subprocess.PIPE)
@@ -57,6 +79,10 @@ def get_network_values():
         system = platform.system()
         interface, gateway = get_active_interface_and_gateway(system)
         if interface and gateway:
+            mac = get_mac_address(system, interface)
+            if not mac:
+                print("Unable to get MAC.")
+                return None
             ip_with_cidr = get_ip_with_cidr(interface, system)
             if ip_with_cidr:
                 network = get_network(ip_with_cidr)
@@ -65,6 +91,7 @@ def get_network_values():
                     "system": system,
                     "interface": interface,
                     "ip": ip,
+                    "mac": mac,
                     "gateway": gateway,
                     "network": network
                 }
@@ -83,6 +110,7 @@ def main():
         print(f"System: {net['system']}")
         print(f"Interface: {net['interface']}")
         print(f"IP: {net['ip']}")
+        print(f"MAC: {net['mac']}")
         print(f"Network: {net['network']}")
         print(f"Gateway: {net['gateway']}")
     else:
