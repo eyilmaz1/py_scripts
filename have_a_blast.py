@@ -18,23 +18,41 @@ def _derive_key(text: str, secret: str) -> bytes:
     raw = (text + secret).encode('utf-8')
     return hashlib.sha256(raw).digest()
 
+def encode_string(plaintext: str, secret: str, k: list) -> str:
+    text = get_public(k)[:5000]
+    key = _derive_key(text, secret)
+
+    payload = plaintext.encode("utf-8")
+    encrypted = _xor_encrypt(payload, key)
+
+    return base64.urlsafe_b64encode(encrypted).decode("utf-8")
+
 def _xor_encrypt(data: bytes, key: bytes) -> bytes:
     return bytes(b ^ key[i % len(key)] for i, b in enumerate(data))
 
 def decode_strings(token: str, secret: str, k: list) -> List[str]:
-    text = get_public(k)
+    text = get_public(k)[:5000]
     key = _derive_key(text, secret)
     encrypted = base64.urlsafe_b64decode(token)
     payload = _xor_encrypt(encrypted, key)
-    return json.loads(payload.decode('utf-8'))
+    return payload.decode('utf-8')
 
 if __name__ == '__main__':
     SECRET = #
     another_mystry = #
-    token="NuWkBdJ06YRMDIvMQpbdDz-JA9jYR5V103lPyolQkcwCs6gUgje7hAFP3c9YnJhGPYdWiN5DjzKcLU-H3QadwBijpFWMO7nVFEPHwxXemkhuyUqZ2QDNMJJ5FJbMUNiUT62uAtJ1_t9CAImER4fYBnTGAdacAId10XkYlMxQ2JRPrqwHz2j-hEwMi8pWh90CP4kD2NhDj3fVf0_KiVCO2wLl7VeCefTSFEPEhBvSmAlo1leV0QDNMJJoAY_dF9aYTeWlHsVo_spCAImER4fUCXWHD9qeTpR312wKg4te1JYBsq8UyDnG"
-    token2 = "NuWtFtJ8_oRMDIvRVpzOSDGFAY_SRo4ynC1PgcUTkJZB5-McyXjwhEwMi9FYgNYOP4kD2NhHl3XcYh3EhVLWwgy3rgWCN7uEBULOx1CXmEY9h0yN0gDNMJJlDJTaGtaYTeWzFsJ58tJCAImEVJPUCXjJAdacAIJi1WkEkote1JYCq6gBxTm3hkJBzNRUi5hGPYdOn8hDjTKcLU-E3AGNlkHn4xrBb_jOQgCJhFmHzkgxhQGY00OVMpwtT4XGHZ-WQefjA8V394RMDIvSWILKBniHfg=="
+    token="_9igyNUtTV_Uj5cU50yWAAB1m85461Ad7HIxusj-qNm636DFxmMHS8Scm0D2TYdFEHXUxWWkVxjmMTX5yO630rrAvdLVY0JTkJiHVu9AgUUFZNrfdfZBVOY_ILbP8ufb-9-1z4dpRkTXjYAU-UaNRQFuz99v6QQX-iEkttG3otvz3reHw2RCWdWE0kT2R4ENQ23OzGflQxGvPiW33_8="
+    token2 = "9sugwMItUEvenNJB7U2NRQRt2s8g700X5HInts77o5f-z6TCy2JXCsaJglvxCYcLBGDcziDrUxqvOjGrz__nxfvIsM7TLURL3ouXWKNKkAAHaM-Lb-hNAupyPbzO9L6X98-mxsstRV_DkdJZ4l2BDUNvzt8g5ksV-3IzttP858P_xr6H02JXWtyN"
+    
+    v = input('Command:')
+    
     try:
-        recovered = decode_strings(token, SECRET, another_mystry)
-        print(recovered)
+        if v == 'e':
+            #f = 
+            encoded = encode_string(f, SECRET, another_mystry)
+            print(encoded)
+        elif v == 'd':
+            recovered = decode_strings(token, SECRET, another_mystry)
+            print(recovered)
     except:
         print('Failed')
+
