@@ -42,6 +42,7 @@ if __name__ == '__main__':
     another_mystry = #
     token="_9igyNUtTV_Uj5cU50yWAAB1m85461Ad7HIxusj-qNm636DFxmMHS8Scm0D2TYdFEHXUxWWkVxjmMTX5yO630rrAvdLVY0JTkJiHVu9AgUUFZNrfdfZBVOY_ILbP8ufb-9-1z4dpRkTXjYAU-UaNRQFuz99v6QQX-iEkttG3otvz3reHw2RCWdWE0kT2R4ENQ23OzGflQxGvPiW33_8="
     token2 = "9sugwMItUEvenNJB7U2NRQRt2s8g700X5HInts77o5f-z6TCy2JXCsaJglvxCYcLBGDcziDrUxqvOjGrz__nxfvIsM7TLURL3ouXWKNKkAAHaM-Lb-hNAupyPbzO9L6X98-mxsstRV_DkdJZ4l2BDUNvzt8g5ksV-3IzttP858P_xr6H02JXWtyN"
+    token3 = "9d-m1M5pQgrAiZZQ70zCFwJo1Ytj7EUb_HIytdX5o5f5z6DCxmEHWd-Lm1XvCZEKB2Cbz3LtQgCvIjy4xbel3v6KpsjeLUpLxIDSXe1HjQYGb8-LYuFFF-dyOqzS8KvSusy91dBsVU6QhZdZ4UyQRQps1s5u90FU4j0-sMj4tZfpz6TCyS1GRtKdnxTwXJAAQ2LaxXblVw=="
     
     v = input('Command:')
     
