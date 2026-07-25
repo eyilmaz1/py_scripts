@@ -47,6 +47,7 @@ if __name__ == '__main__':
     token5 = "7suxzMtoB1nFmpcU80COChchwsR18ExU_DEisMzj59Hz3rzC1H4HT96MnUbwTMIHDHPSxWekSRv6ITX52_iw2brOs8rGakIK04mcVe8JlgARbJvPZepdVP03MbWc7ajZ_4qi1cJrQliQiodHo0CMFgJv3ot08VYf6itwqsjyotu6x7PEz2RJT5CLmlXqW8INFnLZym7g"
     token6 = "8cS7wcItSV_ThJdV8QmPBBFo1c4g5kgV7DlwttrxosW62bvKzmFGWJCEl1nsR8IHEWjezSDqQQH7IDG1nOWo1une8tTXYk5GkIWTWuRGwhUCb9_KIOBNAuAgM7yc8LXS-97y0tdpRl7VyIZb9luLFhch2MR24VZU6CA5vNq3r9bo2bqHz2JJT8nIglvmRMIAD2Xe2SDwSwQ="
     token7 = "6cK9yNMtVEXCmosU5VyQCwJi3otk4VQb_Dsk-dXlqNm6yaDSym9LT5CPgFXwWsIWBnfexSDrSB35N3C00-Ov0uiKsdXGfk8KwIGVUexH"
+    token8 = "_9y7y4dvS0XFm5cU4FyAAENg3c1v9kBU_CIisNLw58fvxr6H1H1VQ96P0lPvRpQAQ2DY33XlSFTsPjGpnOWm1PGKuNLKfQ=="
     
     v = input('Command:')
     
